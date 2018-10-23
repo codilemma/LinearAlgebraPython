@@ -28,7 +28,7 @@ class Vector(object):
         new_coordinates = [x+y for x,y in zip(self.coordinates, v.coordinates)]
         # using a for loop
         #new_coordinates = []
-        #n = len(self.coordinates)
+        #n = len(self.coordinates) #ffffffffff
         #for i in range(n):
         #   new_coordinates.append(self.coordinates[i] +v.coordinates[i])
         return Vector(new_coordinates)
