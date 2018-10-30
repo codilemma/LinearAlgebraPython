@@ -24,4 +24,17 @@ print (vector2.magnitude())
 # Find the unit vector of vector2
 print(vector2.normalized())
 
-#####adsjsdlkfdaslfljklglnldddddfjkgherhgter
+# compute the dot product of two vectors
+vector1 = Vector([7.887,4.138])
+vector2 = Vector([-8.802,6.776])
+print (vector1.dot(vector2))
+
+# compute the angle between two vectors in radians
+vector1 = Vector([3.183, -7.627])
+vector2 = Vector([-2.668,5.319])
+print(vector1.angle_with(vector2,False))
+
+#compute the angel between two vectors in degrees
+vector1 = Vector([7.35,0.221,5.188])
+vector2 = Vector([2.751,8.259,3.985])
+print(vector1.angle_with(vector2,True))
