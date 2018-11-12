@@ -85,3 +85,18 @@ class Vector(object):
                 raise Exception('Cannot compute an angle with zero vector')
             else:
                 raise e
+
+    # two vectors are are parallel if one is a scalar multiple of the other.
+    # two vectors are orthogonal if their dot product is equal to zero.
+    # if a vector is orthogonal to itself, it must be the zero vector.
+    def is_orthogonal_to(self, v, tolerance = 1e-10):
+        return abs(self.dot(v)) < tolerance
+
+    def is_parallel_to(self,v):
+        return (self.is_zero() or
+                v.is_zero() or
+                self.angle_with(v) == 0 or
+                self.angle_with(v) == pi)
+
+    def is_zero(self, tolerance = 1e-10):
+        return self.magnitude() < tolerance
