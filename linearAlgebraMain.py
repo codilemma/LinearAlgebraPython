@@ -60,3 +60,41 @@ v1 = Vector([-7.579, -7.88])
 v2 = Vector([22.737, 23.64])
 print 'is parallel:', v1.is_parallel_to(v2)
 print 'is orthogonal:', v1.is_orthogonal_to(v2)
+
+# Projection methods
+print('')
+print('#### Compute the parallel component of a vector with respect to the basis vector ####')
+v = Vector([3.039, 1.879])
+w = Vector([0.825, 2.036])
+vpar = v.component_parallel_to(w)
+print 'vpar = ', vpar
+
+print('')
+print('#### Compute the orthogonal component of a vector with respect to the basis vector ####')
+vort = v.component_orthogonal_to(w)
+print 'vort = ', vort
+
+print('')
+print('#### Check that the sum of the vpar and vort = v ####')
+print 'v = vpar + vort = ', vpar.plus(vort)
+
+# Find the cross product of two vectors
+print('')
+print('#### Find the Cross product of two vectors ####')
+v1 = Vector([8.462, 7.893, -8.187])
+v2 = Vector([6.984, -5.975, 4.778])
+print 'V1xV2 = ', v1.cross(v2)
+
+# Find the area of the parallelogram spanned by two vectors
+print('')
+print('#### Find the Area of the Parallelogram Spanned by Two Vectors ####')
+v1 = Vector([-8.987, -9.838, 5.031])
+v2 = Vector([-4.268, -1.861, -8.866])
+print 'area of parallelogram = ', v1.area_of_parallelogram_with(v2)
+
+# Find the area of the triangle spanned by two vectors
+print('')
+print('#### Find the Area of the Triangle Spanned by Two Vectors####')
+v1 = Vector([1.5, 9.547, 3.691])
+v2 = Vector([-6.007, 0.124, 5.772])
+print 'area of triangle = ', v1.area_of_triangle_with(v2)
