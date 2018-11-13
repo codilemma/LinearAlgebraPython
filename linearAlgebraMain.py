@@ -1,4 +1,3 @@
-#import vector as my_vector
 from vector import *
 
 
@@ -58,7 +57,7 @@ print(vector1.angle_with(vector2,True))
 # check if two vectors are orthogonal or parallel
 print('')
 print('#### Check if two Vectors are Orthogonal or Parallel ####')
-v1 = Vector([5, 10])
+v1 = Vector([-7.579, -7.88])
 v2 = Vector([22.737, 23.64])
 print 'is parallel:', v1.is_parallel_to(v2)
 print 'is orthogonal:', v1.is_orthogonal_to(v2)
