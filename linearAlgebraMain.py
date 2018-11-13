@@ -1,6 +1,5 @@
 from vector import *
 
-
 # Add two vectors
 print('')
 print('#### Add Two Vectors ####')

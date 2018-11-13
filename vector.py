@@ -4,7 +4,9 @@ decimal.getcontext().prec = 30
 
 class Vector(object):
 
-    CANNOT_NORMALIZE_ZERO_VECTOR_MSG = 'Cannot normalize the zero vector'
+    CANNOT_NORMALIZE_ZERO_VECTOR_MSG    = 'Cannot normalize the zero vector'
+    NO_UNIQUE_PARALLEL_COMPONENT_MSG    = 'No Unique Parallel Component Found'
+    NO_UNIQUE__ORTHOGONAL_COMPONENT_MSG = 'No Unique Orthogonal Component Found'
 
     def __init__(self, coordinates):
         try:
@@ -104,6 +106,29 @@ class Vector(object):
         # returns true if magnitude is less than tolerance
         return self.magnitude() < tolerance
 
+# PROJECTION METHODS
+    def component_orthogonal_to(self, basis):
+        try:
+            projection = self.component_parallel_to(basis)
+            return self.minus(projection)
+
+        except Exception as e:
+            if str(e) == self.NO_UNIQUE_PARALLEL_COMPONENT_MSG:
+                raise Exception(self.NO_UNIQUE__ORTHOGONAL_COMPONENT_MSG)
+            else:
+                raise e    
+    
+    def component_parallel_to(self, basis):
+        try:
+            u = basis.normalized()
+            weight = self.dot(u)
+            return u.times_scalar(weight)
+
+        except Exception as e:
+            if str(e) == self.CANNOT_NORMALIZE_ZERO_VECTOR_MSG:
+                raise Exception(self.NO_UNIQUE_PARALLEL_COMPONENT_MSG)
+            else:
+                raise e
 
 
 # HELPER FUNCTIONS
