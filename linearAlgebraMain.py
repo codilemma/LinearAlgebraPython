@@ -1,5 +1,7 @@
 from vector import *
 from line import *
+from plane import *
+from linsys import *
 
 # Add two vectors
 print('')
@@ -103,7 +105,9 @@ print 'area of triangle = ', v1.area_of_triangle_with(v2)
 # Check to see if two lines are the same
 print('')
 print('#### Check to see if two lines are the same ####')
+# Line 1: 4.046x + 2.836y = 1.21
 ell1 = Line(normal_vector=Vector(['4.046', '2.836']), constant_term = '1.21')
+# Line 2: 10.115x + 7.09y = 3.025
 ell2 = Line(normal_vector=Vector(['10.115', '7.09']), constant_term = '3.025')
 print 'intersection: ', ell1.intersection_with(ell2)
 
@@ -120,3 +124,42 @@ print('#### Function will return "None" if the lines are parallel ####')
 ell1 = Line(normal_vector=Vector(['1.182', '5.562']), constant_term = '8.68')
 ell2 = Line(normal_vector=Vector(['1.773', '8.343']), constant_term = '9.525')
 print 'intersection: ', ell1.intersection_with(ell2)
+
+# Determine if planes are parallel or equal
+print('')
+print('#### Determine if planes are parallel or equal ####')
+p1 = Plane(normal_vector=Vector(['-0.412','3.806','0.728']), constant_term = '-3.46')
+p2 = Plane(normal_vector=Vector(['1.03','-9.515','-1.82']), constant_term = '8.65')
+print 'Are planes parallel?: {}'.format(p1.is_parallel_to(p2))
+print 'Are planes equal?:{}'.format(p1 == p2)
+
+# Systems of Equations
+# Define the Planes
+p0 = Plane(normal_vector=Vector(['1','1','1']), constant_term='1')
+p1 = Plane(normal_vector=Vector(['0','1','0']), constant_term='2')
+p2 = Plane(normal_vector=Vector(['1','1','-1']), constant_term='3')
+p3 = Plane(normal_vector=Vector(['1','0','-2']), constant_term='2')
+
+s = LinearSystem([p0,p1,p2,p3])
+print('')
+print('#### Print the indices of first nonzero terms in each row ####')
+print s.indices_of_first_nonzero_terms_in_each_row()
+print('')
+print('#### Print the equations ####')
+print '{},{},{},{}'.format(s[0],s[1],s[2],s[3])
+print('')
+print('#### Print the number of equations in the system ####')
+print len(s)
+print('')
+print('#### Print the system of equations ####')
+print s
+
+s[0] = p1
+print('')
+print('#### Print the system of equations after changing one of the equations ####')
+print s
+
+print('')
+print('#### Test My decimal functions ####')
+print MyDecimal('1e-9').is_near_zero()
+print MyDecimal('1e-11').is_near_zero()

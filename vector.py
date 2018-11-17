@@ -30,6 +30,12 @@ class Vector(object):
     def __eq__(self, v):
         return self.coordinates == v.coordinates
 
+    def __getitem__(self, i):
+        return self.coordinates[i]
+
+    def __iter__(self):
+        return self.coordinates.__iter__()
+
 # LINEAR ALGEBRA METHODS
     def plus(self,v):
         # using the list comprehension method
